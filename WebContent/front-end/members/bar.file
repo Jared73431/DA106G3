@@ -1,0 +1,215 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<head>
+ <style type="text/css">
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700|Source+Sans+Pro:300,400,600,700&display=swap");
+* {
+  outline: none;
+  box-sizing: border-box;
+}
+
+.left-side {
+  width: 260px;
+  height:100%;
+  border-right: 1px solid #272a3a;
+  flex-direction: column;
+  transition: 0.3s;
+  background-color: rgba(126,149,124,0.8);
+  overflow: auto;
+  flex-shrink: 0;
+  float:left;
+}
+@media screen and (max-width: 930px) {
+  .left-side.active {
+    z-index: 4;
+  }
+  .left-side.active > *:not(.logo) {
+    opacity: 1;
+    transition: 0.3s 0.2s;
+  }
+  .left-side.active .left-side-button svg:first-child {
+    opacity: 0;
+  }
+  .left-side.active .left-side-button svg:last-child {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  .left-side:not(.active) {
+    width: 56px;
+    overflow: hidden;
+  }
+  .left-side:not(.active) > *:not(.logo):not(.left-side-button) {
+    opacity: 0;
+  }
+  .left-side:not(.active) .logo {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    transform-origin: bottom;
+    display: flex;
+    align-items: center;
+    margin-top: -10px;
+  }
+}
+
+.right-side {
+  width: 280px;
+  flex-shrink: 0;
+  margin-left: auto;
+  overflow: auto;
+  background-color: #151728;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 1210px) {
+  .right-side {
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: 0.3s;
+    height: 100%;
+    transform: translateX(280px);
+    z-index: 4;
+  }
+  .right-side.active {
+    transform: translatex(0);
+  }
+}
+
+.logo {
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  height: 68px;
+  line-height: 68px;
+  letter-spacing: 4px;
+  position: sticky;
+  top: 0;
+  background: rgba(126,149,124,0.8);
+}
+
+.side-title {
+  font-family: "DM Sans", sans-serif;
+  color: #5c5e6e;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.side-wrapper {
+  padding: 30px;
+}
+
+.side-menu {
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  white-space: nowrap;
+}
+.side-menu svg {
+  margin-right: 16px;
+  width: 16px;
+}
+.side-menu a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+.side-menu a:hover {
+  color: #42602D;
+}
+.side-menu a:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.left-side-button {
+  display: none;
+}
+@media screen and (max-width: 930px) {
+  .left-side-button {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    height: 60px;
+    background-color: rgba(39, 42, 58, 0.5);
+    border: 0;
+    padding: 0;
+    line-height: 0;
+    color: #fff;
+    border-bottom: 1px solid #272a3a;
+  }
+  .left-side-button svg {
+    transition: 0.2s;
+    width: 24px;
+  }
+  .left-side-button svg:last-child {
+    position: absolute;
+    left: 50%;
+    transform: translate(100%, -50%);
+    top: 50%;
+    opacity: 0;
+  }
+}
+
+
+</style>
+ </head>
+<body>
+<div class="left-side" :class="{'active' : leftSide}">
+    <div class="left-side-button" @click="leftSide = !leftSide">
+      <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      <svg stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+  <path d="M19 12H5M12 19l-7-7 7-7"/>
+</svg>
+    </div>
+    <div class="logo">會員管理</div>
+    <div class="side-wrapper">
+      <div class="side-title">MENU</div>
+      <div class="side-menu">
+        <a href="<%=request.getContextPath()%>/front-end/members/membersPage.jsp">
+          個人首頁
+        </a>
+        <a href="<%=request.getContextPath()%>/front-end/members/update_members_input.jsp">
+          修改資料
+        </a>
+        <a href="<%=request.getContextPath()%>/front-end/transactions/transactionsPage.jsp">
+         交易紀錄
+        </a>
+        <a href="<%=request.getContextPath()%>/front-end/transactions/addTransactions.jsp">
+          儲值購物金
+        </a>
+       
+        <c:if test="${membersVO.coa_qualifications == 0 }">
+       <a href="#" id="applyCoach">
+          申請教練
+		</a>
+		 </c:if>
+		<a href="<%=request.getContextPath()%>/front-end/cour_booking/courseManage.jsp">
+          我的課程
+        </a>
+        <a href="<%=request.getContextPath()%>/front-end/attendrace/attendRacePage.jsp">
+          比賽紀錄
+        </a>       
+        <a href="<%=request.getContextPath()%>/front-end/followmaster/getMaster.jsp">
+          我的追蹤
+        </a>
+	    <a href="<%=request.getContextPath()%>/front-end/orders/listMemOrders.jsp"> 
+	   我的訂單 
+	     </a>        
+         <a href="<%=request.getContextPath()%>/members/members.do?action=listExper_ByMemberno&member_no=${membersVO.member_no}">
+          我的心得
+        </a>
+         <a href="<%=request.getContextPath()%>/members/members.do?action=listNotes_ByMemberno&member_no=${membersVO.member_no}">
+          我的通知
+        </a>
+      </div>
+    </div>
+  
+    
+  </div>
+    </body>
+    </html>

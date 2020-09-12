@@ -1,0 +1,33 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<div class="row">
+	<div style="margin:10px auto">
+		  <%if (rowsPerPage<rowNumber) {%>
+		    <%if(pageIndex>=rowsPerPage){%>
+		        <A class="badge badge-primary" href="<%=request.getRequestURI()%>?whichPage=1">至第一頁</A>&nbsp;
+		        <A class="badge badge-primary" href="<%=request.getRequestURI()%>?whichPage=<%=whichPage-1%>">上一頁 </A>&nbsp;
+		    <%}%>
+		  
+		    <%if(pageIndex<pageIndexArray[pageNumber-1]){%>
+		        <A class="badge badge-primary" href="<%=request.getRequestURI()%>?whichPage=<%=whichPage+1%>">下一頁 </A>&nbsp;
+		        <A class="badge badge-primary" href="<%=request.getRequestURI()%>?whichPage=<%=pageNumber%>">最後一頁</A>&nbsp;
+		    <%}%>
+		  <%}%>  
+	</div>
+</div>
+
+  <%if (pageNumber>1) {%>
+    <FORM METHOD="post" ACTION="<%=request.getRequestURI()%>">   
+	<div class="row">
+		<div style="margin:10px auto">
+       
+       <select size="1" name="whichPage">
+         <%for (int i=1; i<=pageNumber; i++){%>
+            <option value="<%=i%>">跳至第<%=i%>頁
+         <%}%> 
+       </select>
+       		<input class="btn btn-primary" type="submit" value="確定" >  
+    	</div>
+    </div>
+    </FORM>
+  <%}%>

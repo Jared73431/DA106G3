@@ -1,0 +1,156 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+<html>
+<head>
+
+<link rel="stylesheet" href="<%=request.getContextPath()%>/js/vendors/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/js/back-end/css/demo.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/js/back-end/css/mmenu.css" />
+
+<style>
+div#top{
+	margin:1rem;
+}
+div#logout{
+  position:absolute;
+  top:0.7rem;
+  right:1.3rem;
+  color:#fff;
+}
+
+form#formlogin{
+	display:inline;
+}
+
+</style>
+
+</head>
+       <div id="page">
+            <div class="header">
+                <a href="#menu"><span></span></a>
+                動吃動吃's後台
+            </div>
+            
+            <nav id="menu">
+           	 	<ul>
+           	 	    <li>
+           	 	    	<a href="<%=request.getContextPath()%>/back-end/backstage/index.jsp">
+           	 	    		<span>首頁</span>
+           	 	    	</a>
+                       
+                    </li>
+                    
+ <% if (authList.contains("F0001")){       %>     
+                
+                     <li><span>後台人員管理</span>
+                        <ul>
+                            <li><a href="<%=request.getContextPath()%>/back-end/admins/listAllAdmin.jsp">後台人員管理</a></li>
+                            <li><a href="<%=request.getContextPath()%>/back-end/authorizations/listAllAuthorizations.jsp">權限</a></li>
+                        </ul>
+                    </li>
+                    
+ <% } if (authList.contains("F0003")){ %>
+ 
+                    <li><span>網頁管理</span>
+                        <ul>
+                            <li><a href="<%=request.getContextPath()%>/back-end/groupreport/listAllGroupReport.jsp">揪團檢舉</a></li>
+                            <li><a href="<%=request.getContextPath()%>/back-end/exerciseitem/listAllExe.jsp">運動項目</a></li>
+                            <li><a href="<%=request.getContextPath()%>/back-end/foodnutrition/listAllFood.jsp">食物項目</a></li>
+                        </ul>
+                    </li>
+
+  <% } if (authList.contains("F0004")){ %>                  
+                    <li><span>商品管理</span>
+                        <ul>
+                            <li><a href="<%=request.getContextPath()%>/back-end/product/listAllProduct.jsp">商品列表</a></li>
+                            <li><a href="<%=request.getContextPath()%>/back-end/product/addProduct.jsp">新增商品</a></li>                           
+                        </ul>
+                    </li>
+                    
+ <% } if (authList.contains("F0005")){ %>               
+                    <li><span>訂單管理</span>
+                        <ul>
+                            <li><a href="<%=request.getContextPath()%>/back-end/orders/listAllOrders.jsp">訂單列表</a></li>
+                            <li><a href="<%=request.getContextPath()%>/back-end/order_list/listAllOrderList.jsp">訂單詳情</a></li>
+                            
+                        </ul>
+                    </li>
+                    
+  <% } if (authList.contains("F0006")){ %>                   
+                    <li><span>會員管理</span>
+                        <ul>
+                            <li><a href="<%=request.getContextPath()%>/back-end/members/listAllMembers.jsp">所有會員</a></li>
+                            <li><a href="<%=request.getContextPath()%>/back-end/transactions/listAllTransactions.jsp">交易管理</a></li>
+
+                        </ul>
+                    </li>
+                    
+   <% } if (authList.contains("F0002")){ %>                      
+                    <li><span>教練管理</span>
+                        <ul>
+                           <li><a href="<%=request.getContextPath()%>/back-end/coach/addCoach.jsp">教練審核</a></li>
+                           <li><a href="<%=request.getContextPath()%>/back-end/cour_booking/listAllCour_Booking.jsp">課程結案審核</a></li>
+                           <li><a href="<%=request.getContextPath()%>/back-end/coach/listAllCoach.jsp">教練清單</a></li>
+                        </ul>
+                    </li>
+                    
+    <% } if (authList.contains("F0007")){ %>                      
+                    <li><span>通知管理</span>
+                        <ul>
+                    <li><a href="<%=request.getContextPath()%>/back-end/notificationlist/listAllNotificationList.jsp">通知列表</a></li> 						
+                    <li><a href="<%=request.getContextPath()%>/back-end/notificationlist/addNotificationList.jsp">新增通知</a></li> 
+                    <li><a href="<%=request.getContextPath()%>/back-end/categorys/listAllCategorys.jsp">通知類別</a></li> 
+                    <li><a href="<%=request.getContextPath()%>/back-end/categorys/addCategorys.jsp">新增類別</a></li> 
+                    	
+                    	</ul>
+    <% } if (authList.contains("F0008")){ %>                     
+                    <li><span>聊天機器人</span>
+                        <ul>
+                            <li><a href="#">子功能</a></li>
+                            <li><a href="#">子功能</a></li>
+                        </ul>
+                    </li>
+                    
+     <% } if (authList.contains("F0009")){ %>                    
+                    <li><span>資訊管理</span>
+                        <ul>
+                            <li><a href="<%=request.getContextPath()%>/back-end/news_knowledge/listAllNewsKnowledge.jsp">所有資訊</a></li>
+                            <li><a href="<%=request.getContextPath()%>/back-end/news_knowledge/addNewsKnowledge.jsp">新增資訊</a></li>
+                            <li><a href="<%=request.getContextPath()%>/back-end/food_inform/listAllFoodInform.jsp">食物資訊列表</a></li>
+                            <li><a href="<%=request.getContextPath()%>/back-end/food_inform/addFoodInform.jsp">新增食物資訊</a></li>
+                        </ul>
+                    </li>
+<% } %>
+                </ul>
+            </nav>
+
+<div id="logout">
+  嗨~ ${adminsVO.admin_name} 
+  <form action="<%=request.getContextPath()%>/backloginhandler.do" id="formlogin">
+  <input type="hidden" name="action"  value="logout">
+  <input type="submit" value="登出">   
+  </form>
+</div>
+
+<script src="<%=request.getContextPath()%>/js/vendors/jquery/jquery-3.4.1.min.js"></script>
+<script src="<%=request.getContextPath()%>/js/vendors/popper/popper.min.js"></script>
+<script src="<%=request.getContextPath()%>/js/vendors/bootstrap/js/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath()%>/js/back-end/js/mmenu.polyfills.js"></script>
+<script src="<%=request.getContextPath()%>/js/back-end/js/mmenu.js"></script>
+
+<script>
+   new Mmenu( document.querySelector( '#menu' ));
+
+    document.addEventListener( 'click', function( evnt ) {
+      var anchor = evnt.target.closest( 'a[href^="#/"]' );
+         if ( anchor ) {
+            alert('Thank you for clicking, but that\'s a demo link.');
+            evnt.preventDefault();
+          }
+     });
+</script>
+ 
+</body>
+</html>

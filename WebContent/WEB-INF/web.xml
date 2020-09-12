@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0" metadata-complete="false">
+
+	<display-name>DA106G3</display-name>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<resource-ref>
+		<description>DB Connection</description>
+		<res-ref-name>jdbc/TestDBG3</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+<!-- 翠珍 -->	
+
+	<!-- 揪團 -->
+	<servlet>
+		<servlet-name>GroupgoServlet</servlet-name>
+		<servlet-class>com.groupgo.controller.GroupgoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GroupgoServlet</servlet-name>
+		<url-pattern>/groupgo/groupgo.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- 我的揪團 -->
+	<servlet>
+		<servlet-name>MyGroupServlet</servlet-name>
+		<servlet-class>com.mygroup.controller.MyGroupServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MyGroupServlet</servlet-name>
+		<url-pattern>/mygroup/mygroup.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- 揪團檢舉 -->
+	<servlet>
+		<servlet-name>GroupReportServlet</servlet-name>
+		<servlet-class>com.groupreport.controller.GroupReportServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GroupReportServlet</servlet-name>
+		<url-pattern>/groupreport/groupreport.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 追蹤團主 -->
+	<servlet>
+		<servlet-name>FollowMasterServlet</servlet-name>
+		<servlet-class>com.followmaster.controller.FollowMasterServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FollowMasterServlet</servlet-name>
+		<url-pattern>/followmaster/followmaster.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- 運動項目 -->
+	<servlet>
+		<servlet-name>ExerciseItemServlet</servlet-name>
+		<servlet-class>com.exerciseitem.controller.ExerciseItemServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExerciseItemServlet</servlet-name>
+		<url-pattern>/exerciseitem/exerciseitem.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 食物營養資訊 -->
+	<servlet>
+		<servlet-name>FoodNutritionServlet</servlet-name>
+		<servlet-class>com.foodnutrition.controller.FoodNutritionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FoodNutritionServlet</servlet-name>
+		<url-pattern>/foodnutrition/foodnutrition.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 飲食詳情 -->
+	<servlet>
+		<servlet-name>DietDetailServlet</servlet-name>
+		<servlet-class>com.dietdetail.controller.DietDetailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DietDetailServlet</servlet-name>
+		<url-pattern>/dietdetail/dietdetail.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 體態紀錄 -->
+	<servlet>
+		<servlet-name>PostureServlet</servlet-name>
+		<servlet-class>com.posture.controller.PostureServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PostureServlet</servlet-name>
+		<url-pattern>/posture/posture.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 飲食紀錄 -->
+	<servlet>
+		<servlet-name>DietRecordServlet</servlet-name>
+		<servlet-class>com.dietrecord.controller.DietRecordServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DietRecordServlet</servlet-name>
+		<url-pattern>/dietrecord/dietrecord.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 運動紀錄 -->
+	<servlet>
+		<servlet-name>ExerciseRecordServlet</servlet-name>
+		<servlet-class>com.exerciserecord.controller.ExerciseRecordServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExerciseRecordServlet</servlet-name>
+		<url-pattern>/exerciserecord/exerciserecord.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 飲食照片 -->
+	<servlet>
+		<servlet-name>DietRecordpic</servlet-name>
+		<servlet-class>com.dietrecord.model.ShowPic</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DietRecordpic</servlet-name>
+		<url-pattern>/showdiet.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 揪團照片 -->
+	<servlet>
+		<servlet-name>Groupgopic</servlet-name>
+		<servlet-class>com.groupgo.model.ShowPic</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Groupgopic</servlet-name>
+		<url-pattern>/showgroupgo.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 地圖 -->
+	<servlet>
+		<servlet-name>Map</servlet-name>
+		<servlet-class>com.main.MyMap</servlet-class>
+		<load-on-startup>9</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Map</servlet-name>
+		<url-pattern>/mymap.do</url-pattern>
+	</servlet-mapping>
+
+	
+<!-- 尹翔前台 -->	
+	
+	<!-- 會員 -->	
+	<servlet>
+		<servlet-name>Member</servlet-name>
+		<servlet-class>com.members.controller.MembersServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Member</servlet-name>
+		<url-pattern>/members/members.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- 交易 -->
+	<servlet>
+		<servlet-name>TransactionsServlet</servlet-name>
+		<servlet-class>com.transactions.controller.TransactionsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TransactionsServlet</servlet-name>
+		<url-pattern>/transactions/transactions.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- 參加比賽 -->	
+	<servlet>
+		<servlet-name>AttendRaceServlet</servlet-name>
+		<servlet-class>com.attendrace.controller.AttendRaceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AttendRaceServlet</servlet-name>
+		<url-pattern>/attendrace/attendrace.do</url-pattern>
+	</servlet-mapping>	
+	
+	<servlet>
+		<servlet-name>AttendRaceShowRecord</servlet-name>
+		<servlet-class>com.attendrace.model.AttendRaceShowRecord</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AttendRaceShowRecord</servlet-name>
+		<url-pattern>/AttendRaceShowRecord</url-pattern>
+	</servlet-mapping>	
+	
+<!-- 尹翔後台 -->
+  
+	<!-- 管理員 -->
+	<servlet>
+	  <servlet-name>AdminsServlet</servlet-name>
+	  <servlet-class>com.admins.controller.AdminsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>AdminsServlet</servlet-name>
+	  <url-pattern>/admins/admins.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- 權限 -->  
+	  <servlet>
+	  <servlet-name>AuthorizationsServlet</servlet-name>
+	  <servlet-class>com.authorizations.controller.AuthorizationsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>AuthorizationsServlet</servlet-name>
+	  <url-pattern>/authorizations/authorizations.do</url-pattern>
+	</servlet-mapping>
+  
+	<!-- 功能 -->
+	<servlet>
+	  <servlet-name>FeatureServlet</servlet-name>
+	  <servlet-class>com.feature.controller.FeatureServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>FeatureServlet</servlet-name>
+	  <url-pattern>/feature/feature.do</url-pattern>
+	</servlet-mapping>
+
+<!-- 勝瑜前台 -->
+	
+	<!-- chatroom -->
+	<servlet>
+		<servlet-name>ChatroomServlet</servlet-name>
+		<servlet-class>com.chatroom.controller.ChatroomServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChatroomServlet</servlet-name>
+		<url-pattern>/back-end/chatroom/chatroom.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- groupchat -->
+	<servlet>
+		<servlet-name>GroupChatServlet</servlet-name>
+		<servlet-class>com.groupchat.controller.GroupChatServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GroupChatServlet</servlet-name>
+		<url-pattern>/back-end/groupchat/groupchat</url-pattern>
+	</servlet-mapping>
+	
+	<!-- experience -->
+	<servlet>
+		<servlet-name>ExperienceServlet</servlet-name>
+		<servlet-class>com.experience.controller.ExperienceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExperienceServlet</servlet-name>
+		<url-pattern>/experience.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 心得圖片讀取 -->
+	<servlet>
+		<servlet-name>experReader</servlet-name>
+		<servlet-class>com.experience.controller.DBGifReader4</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>experReader</servlet-name>
+		<url-pattern>/experReader</url-pattern>
+	</servlet-mapping>
+	
+<!-- 勝瑜後台 -->
+	
+	<!-- 通知類別 -->
+	<servlet>
+		<servlet-name>CategorysServlet</servlet-name>
+		<servlet-class>com.categorys.controller.CategorysServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CategorysServlet</servlet-name>
+		<url-pattern>/categorys.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- 通知 -->	
+	<servlet>
+		<servlet-name>NotificationServlet</servlet-name>
+		<servlet-class>com.notificationlist.controller.NotificationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NotificationServlet</servlet-name>
+		<url-pattern>/notificationlist/notificationlist.do</url-pattern>
+	</servlet-mapping>
+
+	
+<!-- 建興前台+其他 -->
+
+	<!-- 產品分類 -->
+	<servlet>
+		<servlet-name>ProductCateServlet</servlet-name>
+		<servlet-class>com.productcate.controller.ProductCateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProductCateServlet</servlet-name>
+		<url-pattern>/product_cate.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- 購物 -->
+	<servlet>
+		<servlet-name>ShoppingServlet</servlet-name>
+		<servlet-class>com.shopping.controller.ShoppingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShoppingServlet</servlet-name>
+		<url-pattern>/shopping.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 資訊分類 -->
+	<servlet>
+		<servlet-name>InformCateServlet</servlet-name>
+		<servlet-class>com.informcate.controller.InformCateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InformCateServlet</servlet-name>
+		<url-pattern>/inform_cate.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- 運動中心 -->
+	<servlet>
+		<servlet-name>GymServlet</servlet-name>
+		<servlet-class>com.gym.controller.GymServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GymServlet</servlet-name>
+		<url-pattern>/gym.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- 比賽 -->
+	<servlet>
+		<servlet-name>RaceServlet</servlet-name>
+		<servlet-class>com.race.controller.RaceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RaceServlet</servlet-name>
+		<url-pattern>/race.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- 運動中心爬蟲 -->
+	<!-- 啟動時載入(Load on Startup)的作業 。伺服器啟動時，會自動載入GymcountServlet -->
+	<servlet>
+		<servlet-name>GymcountServlet</servlet-name>
+		<servlet-class>com.gymwebsocket.controller.GymcountServlet</servlet-class>
+		<load-on-startup>10</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GymcountServlet</servlet-name>
+		<url-pattern>/GymcountServlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- 比賽爬蟲 -->
+	<!-- 啟動時載入(Load on Startup)的作業 。伺服器啟動時，會自動載入GymcountServlet -->
+	<servlet>
+		<servlet-name>RaceNowServlet</servlet-name>
+		<servlet-class>com.race.model.RaceNowServlet</servlet-class>
+		<load-on-startup>10</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RaceNowServlet</servlet-name>
+		<url-pattern>/RaceNowServlet</url-pattern>
+	</servlet-mapping>
+
+		  
+<!-- 建興後台 -->
+	
+	<!-- 產品 -->
+	<servlet>
+		<servlet-name>ProductServlet</servlet-name>
+		<servlet-class>com.product.controller.ProductServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProductServlet</servlet-name>
+		<url-pattern>/product.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 訂單 -->
+	<servlet>
+		<servlet-name>OrdersServlet</servlet-name>
+		<servlet-class>com.orders.controller.OrdersServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OrdersServlet</servlet-name>
+		<url-pattern>/orders.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 訂單明細 -->
+	<servlet>
+		<servlet-name>OrderListServlet</servlet-name>
+		<servlet-class>com.orderlist.controller.OrderListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OrderListServlet</servlet-name>
+		<url-pattern>/order_list.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 食訊 -->
+	<servlet>
+		<servlet-name>FoodInformServlet</servlet-name>
+		<servlet-class>com.foodinform.controller.FoodInformServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FoodInformServlet</servlet-name>
+		<url-pattern>/food_inform.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 新知 -->
+	<servlet>
+		<servlet-name>NewsKnowledgeServlet</servlet-name>
+		<servlet-class>com.newsknowledge.controller.NewsKnowledgeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NewsKnowledgeServlet</servlet-name>
+		<url-pattern>/news_knowledge.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 圖片工具 -->
+	<servlet>
+		<servlet-name>PhotoReaderServlet</servlet-name>
+		<servlet-class>com.util.controller.PhotoReaderServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PhotoReaderServlet</servlet-name>
+		<url-pattern>/PhotoReader</url-pattern>
+	</servlet-mapping>
+
+
+<!-- 建誠前台 -->
+	
+	<!-- 會員申請證照 -->
+	<servlet>
+	  <servlet-name>MembersShowLicense</servlet-name>
+	  <servlet-class>com.members.model.MembersShowLicense</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>MembersShowLicense</servlet-name>
+	  <url-pattern>/MembersShowLicense</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 會員秀圖 -->	
+	<servlet>
+	  <servlet-name>MembersShowPicture</servlet-name>
+	  <servlet-class>com.members.model.MembersShowPicture</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>MembersShowPicture</servlet-name>
+	  <url-pattern>/MembersShowPicture</url-pattern>
+	</servlet-mapping>
+
+<!-- 建誠後台 -->
+	<!-- 圖片後台 -->
+	 <servlet>
+	   <servlet-name>DBGifReader4Admin</servlet-name>
+	   <servlet-class>com.admins.model.DBGifReader4Admin</servlet-class>
+	 </servlet>
+	 <servlet-mapping>
+	   <servlet-name>DBGifReader4Admin</servlet-name>
+	   <url-pattern>/DBGifReader4Admin</url-pattern>
+	 </servlet-mapping>
+	
+	<!-- 圖片教練 -->
+	 <servlet>
+	   <servlet-name>DBGifReader4Coach</servlet-name>
+	   <servlet-class>com.coach.model.DBGifReader4Coach</servlet-class>
+	 </servlet>
+	 <servlet-mapping>
+	   <servlet-name>DBGifReader4Coach</servlet-name>
+	   <url-pattern>/DBGifReader4Coach</url-pattern>
+	 </servlet-mapping>
+	
+	<!-- 課程類別 -->
+	 <servlet>
+	   <servlet-name>Course_kindServlet</servlet-name>
+	   <servlet-class>com.course_kind.controller.Course_kindServlet</servlet-class>
+	 </servlet>
+	 <servlet-mapping>
+	   <servlet-name>Course_kindServlet</servlet-name>
+	   <url-pattern>/course_kind/course_kind.do</url-pattern>
+	 </servlet-mapping>
+	 
+	 <!-- 教練 -->
+	 <servlet>
+	   <servlet-name>CoachServlet</servlet-name>
+	   <servlet-class>com.coach.controller.CoachServlet</servlet-class>
+	 </servlet>
+	 <servlet-mapping>
+	   <servlet-name>CoachServlet</servlet-name>
+	   <url-pattern>/coach/coach.do</url-pattern>
+	 </servlet-mapping>
+	
+	<!-- 課程 -->
+	<servlet>
+		<servlet-name>CourseServlet</servlet-name>
+		<servlet-class>com.course.controller.CourseServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CourseServlet</servlet-name>
+		<url-pattern>/course/course.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 課程預約 -->
+	<servlet>
+		<servlet-name>Cour_BookingServlet</servlet-name>
+		<servlet-class>com.cour_booking.controller.Cour_BookingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Cour_BookingServlet</servlet-name>
+		<url-pattern>/cour_booking/cour_booking.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 教練追蹤 -->
+	<servlet>
+		<servlet-name>Coa_FollowServlet</servlet-name>
+		<servlet-class>com.coa_follow.controller.Coa_FollowServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Coa_FollowServlet</servlet-name>
+		<url-pattern>/coa_follow/coa_follow.do</url-pattern>
+	</servlet-mapping>
+
+	
+<!-- 其他重要架構 -->
+	
+	<!-- 排程監聽器 -->	
+	<listener>
+		<listener-class>com.main.MyTimerTaskListener</listener-class>
+	</listener>
+	
+	<!-- 後台權限驗證 -->
+	<servlet>
+	   <servlet-name>BackLoginHandler</servlet-name>
+	   <servlet-class>com.filters.BackLoginHandler</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>BackLoginHandler</servlet-name>
+	  <url-pattern>/backloginhandler.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 後台登入攔截器 --> 
+	<filter>
+	  <filter-name>backloginFilter</filter-name>
+	  <filter-class>com.filters.BackLoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	  <filter-name>backloginFilter</filter-name>
+	  <url-pattern>/back-end/*</url-pattern>
+	  <dispatcher>REQUEST</dispatcher>
+	  <dispatcher>FORWARD</dispatcher>
+	  <dispatcher>INCLUDE</dispatcher>
+	  <dispatcher>ERROR</dispatcher>
+	  <dispatcher>ASYNC</dispatcher>
+	</filter-mapping>
+	
+	
+	<!-- 前台登入攔截器 -->	
+	<filter>
+	  <filter-name>loginFilter</filter-name>
+	  <filter-class>com.filters.FrontLoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	  <filter-name>loginFilter</filter-name>
+	  <url-pattern>/front-end/members/membersPage.jsp</url-pattern>
+	  <url-pattern>/front-end/posture/posture.jsp</url-pattern>
+	  <url-pattern>/front-end/groupgo/addGroupgo.jsp</url-pattern>
+	  <url-pattern>/front-end/groupgo/listMyGroup.jsp</url-pattern>
+	  <url-pattern>/front-end/groupgo/listOneGroup.jsp</url-pattern>
+	  <url-pattern>/front-end/followmaster/getMaster.jsp</url-pattern>
+	  <url-pattern>/front-end/shopping/Checkout.jsp</url-pattern>
+	  <url-pattern>/front-end/cour_booking/courseManage.jsp</url-pattern>
+	  <url-pattern>/front-end/coach/coachManageCourse.jsp</url-pattern>
+	  <url-pattern>/front-end/course/addCourse.jsp</url-pattern>
+	  <url-pattern>/front-end/course/listOneCourse.jsp</url-pattern>
+	  <dispatcher>REQUEST</dispatcher>
+	  <dispatcher>FORWARD</dispatcher>
+	  <dispatcher>INCLUDE</dispatcher>
+	  <dispatcher>ERROR</dispatcher>
+	  <dispatcher>ASYNC</dispatcher>
+	</filter-mapping>
+	
+  
+</web-app>

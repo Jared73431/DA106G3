@@ -1,0 +1,10 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%  
+	List<String> authList = (List<String>)session.getAttribute("authList");
+	if(!(authList.contains(feature))){
+		session.setAttribute("location", request.getRequestURI());
+		response.sendRedirect(request.getContextPath()+"/back-end/backstage/index.jsp");
+		return;
+	}
+
+%>

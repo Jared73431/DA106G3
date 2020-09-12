@@ -1,0 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<head>
+</head>
+<body>
+
+  <div class="container" id="footer"> 
+     <div class="col-sm-12">
+       <center>Donz Donz @ Institute for Information Industry DA106G3</center>     
+  </div>
+ </div>
+</body>
+</html>
